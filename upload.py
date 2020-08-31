@@ -5,10 +5,12 @@ scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/au
          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
-client = gspread.authorize(credentials)
 
-spreadsheet = client.open('CSV-to-Google-Sheet')
+gc = gspread.service_account('client_secret.json')
 
-with open('data.csv', 'r') as file_obj:
-    content = file_obj.read()
-    client.import_csv(spreadsheet.id, data=content)
+spreadsheet = gc.open('TEST SHEET')
+
+# Read CSV file contents
+content = open('data.csv', 'r').read()
+
+gc.import_csv(spreadsheet.id, content)
