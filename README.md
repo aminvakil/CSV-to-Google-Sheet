@@ -6,9 +6,11 @@
 > cd CSV-to-Google-Sheet
 
 ### Prepare environment
-> pipenv install --python 3.8
+> python3 -m venv venv
 >
-> pipenv shell
+> source venv/bin/activate
+>
+> pip install -r requirements.txt
 
 ### Run the Script
 > python upload.py
